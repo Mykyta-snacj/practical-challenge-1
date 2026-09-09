@@ -1,13 +1,12 @@
 //services
 import classNames from "classnames";
-import { date } from "../services/date";
-import { validateEvent } from "../services/helpers/error";
-import type { Data } from "../types/type";
+import { date } from "../../services/date";
+import { validateEvent } from "../../services/helpers/error";
+import type { Data } from "../../types/type";
 import styles from "./Form.module.scss";
 
 type Props = {
   data: Data;
-  events: Data[];
   setData: React.Dispatch<React.SetStateAction<Data>>;
   setError: React.Dispatch<React.SetStateAction<string | null>>;
   setEvents: React.Dispatch<React.SetStateAction<Data[]>>;
@@ -16,7 +15,6 @@ type Props = {
 
 export const Form: React.FC<Props> = ({
   data,
-  events,
   setData,
   setError,
   setEvents,
@@ -30,7 +28,7 @@ export const Form: React.FC<Props> = ({
   ) => {
     setData({
       ...data,
-      [`${section}`]: event.target.value.trim(),
+      [`${section}`]: event.target.value,
     });
   };
 
@@ -47,10 +45,10 @@ export const Form: React.FC<Props> = ({
 
     const newEvent = {
       ...data,
-      id: Number(new Date()),
+      id: Date.now(),
     };
 
-    setEvents([...events, newEvent]);
+    setEvents((prevEvents) => [...prevEvents, newEvent]);
   };
 
   return (
