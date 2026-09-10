@@ -1,0 +1,24 @@
+.nav {
+    display: flex;
+    font-size: 20px;
+    box-shadow: -12px 11px 17px 10px rgba(0, 0, 0, 0.64);
+    border-radius: 30px;
+}
+
+.nav > * {
+    padding: 0 15px;
+    line-height: 50px;
+    text-decoration: none;
+    border-radius: 30px;
+    color: #000;
+    transition: 300ms;
+
+    &:hover {
+        background-color: #b4b3b3;
+        transition: 300ms;
+    }
+}
+
+.active {
+    background-color: #e2e2e2;
+}

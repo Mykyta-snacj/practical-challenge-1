@@ -1,0 +1,48 @@
+.eventPage {
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 25px;
+    font-size: 30px;
+    box-shadow: -12px 11px 17px 10px rgba(0, 0, 0, 0.64);
+    border-radius: 30px;
+}
+
+.nav {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+}
+
+.title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.type {
+    padding: 0 5px;
+    border-radius: 10px;
+}
+
+.typeOnline {
+    color: #035504;
+    background-color: #43cb66;
+}
+
+.typeOffline {
+    color: #901811;
+    background-color: #fb392e;
+}
+
+.typeHybride {
+    color: #9e5423;
+    background-color: #f89146;
+}

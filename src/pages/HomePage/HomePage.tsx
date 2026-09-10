@@ -1,15 +1,13 @@
 //hooks
 import { useEffect, useState } from "react";
 
-//react-router
-import { NavLink } from "react-router";
-
 //components
 import { Form } from "../../components/Form";
 //services
 import type { Data } from "../../types/type";
 import { date } from "../../services/date";
 import styles from "./HomePage.module.scss";
+import { Navigation } from "../../components/Navigation/Navigation";
 
 type Props = {
   events: Data[];
@@ -41,11 +39,7 @@ export const HomePage: React.FC<Props> = ({ setEvents }) => {
 
   return (
     <div className={styles.homePage}>
-      <div className={styles.nav}>
-        <NavLink to="/events" className={styles.navButton} end>
-          EventsList
-        </NavLink>
-      </div>
+      <Navigation className={styles.nav} />
 
       <h1 className={styles.title}>Event Mannager</h1>
 

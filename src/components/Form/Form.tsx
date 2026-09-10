@@ -117,9 +117,9 @@ export const Form: React.FC<Props> = ({
           <option value="" disabled>
             --Please choose an option--
           </option>
-          <option value="offline">Offline</option>
-          <option value="online">Online</option>
-          <option value="hybride">Hybride</option>
+          <option value="Offline">Offline</option>
+          <option value="Online">Online</option>
+          <option value="Hybride">Hybride</option>
         </select>
       </section>
 

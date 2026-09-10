@@ -6,6 +6,12 @@
 	justify-content: center;
 }
 
+.nav {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+}
+
 .title {
 	margin-bottom: 30px;
     font-size: 52px;
@@ -17,13 +23,4 @@
 
 .error {
 	color: red;
-}
-
-.nav {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    padding: 15px;
-    border-radius: 30px;
-    border: 3px solid black;
 }

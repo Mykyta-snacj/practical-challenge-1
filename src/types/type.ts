@@ -4,5 +4,5 @@ export interface Data {
     about: string;
     startDate: string;
     finishDate: string;
-    type: '' | 'offline' | 'online' | 'hybride'
+    type: '' | 'Offline' | 'Online' | 'Hybride'
 }

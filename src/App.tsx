@@ -11,6 +11,7 @@ import type { Data } from "./types/type";
 //components
 import { HomePage } from "./pages/HomePage/HomePage";
 import { EventsListPage } from "./pages/EventsListPage/EventsListPage";
+import { EventPage } from "./pages/EventPage";
 
 function App() {
   const [eventsList, setEventsList] = useState<Data[]>(() => {
@@ -31,6 +32,10 @@ function App() {
         element={<HomePage events={eventsList} setEvents={setEventsList} />}
       />
       <Route path="/events" element={<EventsListPage events={eventsList} />} />
+      <Route
+        path="/events/:eventId"
+        element={<EventPage events={eventsList} />}
+      />
     </Routes>
   );
 }
