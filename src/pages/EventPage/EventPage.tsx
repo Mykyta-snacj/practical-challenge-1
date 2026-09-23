@@ -1,37 +1,54 @@
-import { useNavigate, useParams } from "react-router";
-import type { Data } from "../../types/type";
+//react-router
+import { Navigate, useNavigate, useParams } from "react-router";
+
+//styles
 import styles from "./EventPage.module.scss";
 import classNames from "classnames";
+
+//redux
+import { useDispatch, useSelector } from "react-redux";
+import { removeEvent } from "../../features/events-slice";
+import type { AppDispatch, RootState } from "../../store";
+
+//components
 import { Navigation } from "../../components/Navigation/Navigation";
 
-type Props = {
-  events: Data[];
-};
-
-export const EventPage: React.FC<Props> = ({ events }) => {
+export const EventPage = () => {
   const { eventId } = useParams<{ eventId: string }>();
+  const events = useSelector((state: RootState) => state.eventsList.events);
+  const event = events.find((el) => el.id === Number(eventId));
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const event = events.find((el) => el.id === Number(eventId)) ?? null;
-
-  if (event === null) {
-    navigate("/events");
+  if (!event) {
+    return <Navigate to="/events" replace />;
   }
+
+  const handleDelete = () => {
+    navigate("/events");
+    dispatch(removeEvent(event.id));
+  };
 
   return (
     <div className={styles.eventPage}>
       <Navigation className={styles.nav} />
 
       <div className={styles.event}>
-        <h1 className={styles.title}>{event?.title}</h1>
+        <div className={styles.line}>
+          <h1 className={styles.title}>{event?.title}</h1>
+          <button onClick={handleDelete} className={styles.buttonDelete}>
+            Remove Event
+          </button>
+        </div>
 
-        {event?.about && <p>{`About: ${event.about}`}</p>}
+        <div className={styles.line}>
+          Start: <span>{event.startDate}</span>
+        </div>
+        <div className={styles.line}>
+          Finish: <span>{event.finishDate}</span>
+        </div>
 
-        <p>{`Start: ${event?.startDate}`}</p>
-
-        <p>{`Finish: ${event?.finishDate}`}</p>
-
-        <p>
+        <div className={styles.line}>
           Type:{" "}
           <span
             className={classNames(styles.type, {
@@ -42,7 +59,33 @@ export const EventPage: React.FC<Props> = ({ events }) => {
           >
             {event?.type}
           </span>
-        </p>
+        </div>
+
+        {event.type !== "Online" && (
+          <>
+            {event.city && (
+              <div className={styles.line}>
+                City: <span>{event.city}</span>
+              </div>
+            )}
+            {event.address && (
+              <div className={styles.line}>
+                Address: <span>{event.address}</span>
+              </div>
+            )}
+            {event.postCode && (
+              <div className={styles.line}>
+                Post Code: <span>{event.postCode}</span>
+              </div>
+            )}
+          </>
+        )}
+
+        {event?.about && (
+          <div>
+            About: <div className={styles.about}>{event.about}</div>
+          </div>
+        )}
       </div>
     </div>
   );

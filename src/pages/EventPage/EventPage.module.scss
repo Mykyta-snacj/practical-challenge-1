@@ -28,8 +28,9 @@
 }
 
 .type {
-    padding: 0 5px;
-    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 15px;
 }
 
 .typeOnline {
@@ -45,4 +46,36 @@
 .typeHybride {
     color: #9e5423;
     background-color: #f89146;
+}
+
+.line {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    justify-content: space-between;
+}
+
+.about {
+    margin-top: 30px;
+    padding: 15px;
+    font-size: 15px;
+    background-color: #ffd06d;
+    border-radius: 20px;
+}
+
+.buttonDelete {
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #5c665f;
+    border: 0;
+    border-radius: 10px;
+    background-color: #d0d0d0;
+    transition: 300ms;
+
+    &:hover {
+        background-color: #959595;
+        transition: 300ms;
+    }
 }

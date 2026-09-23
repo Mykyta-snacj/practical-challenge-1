@@ -3,27 +3,16 @@ import { useEffect, useState } from "react";
 
 //components
 import { Form } from "../../components/Form";
-//services
-import type { Data } from "../../types/type";
-import { date } from "../../services/date";
-import styles from "./HomePage.module.scss";
 import { Navigation } from "../../components/Navigation/Navigation";
+import { SuccessNotification } from "../../components/SuccessNotification";
 
-type Props = {
-  events: Data[];
-  setEvents: React.Dispatch<React.SetStateAction<Data[]>>;
-};
+//services
+import styles from "./HomePage.module.scss";
+import classNames from "classnames";
 
-export const HomePage: React.FC<Props> = ({ setEvents }) => {
+export const HomePage = () => {
   const [error, setError] = useState<string | null>("");
-  const [data, setData] = useState<Data>({
-    id: null,
-    title: "",
-    about: "",
-    startDate: date,
-    finishDate: date,
-    type: "",
-  });
+  const [eventId, setEventId] = useState<number | null>(null);
 
   useEffect(() => {
     if (!error) {
@@ -32,7 +21,7 @@ export const HomePage: React.FC<Props> = ({ setEvents }) => {
 
     const timer = setTimeout(() => {
       setError(null);
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, [error]);
@@ -41,17 +30,27 @@ export const HomePage: React.FC<Props> = ({ setEvents }) => {
     <div className={styles.homePage}>
       <Navigation className={styles.nav} />
 
-      <h1 className={styles.title}>Event Mannager</h1>
+      {eventId ? (
+        <SuccessNotification eventId={eventId} setEventId={setEventId} />
+      ) : (
+        <div className={styles.formContainer}>
+          <h1 className={styles.title}>Event Mannager</h1>
 
-      <Form
-        data={data}
-        setData={setData}
-        setError={setError}
-        setEvents={setEvents}
-        className={styles.form}
-      />
+          <Form
+            setEventId={setEventId}
+            setError={setError}
+            className={styles.form}
+          />
 
-      <div className={styles.error}>{error ? error : ""}</div>
+          <div
+            className={classNames(styles.error, {
+              [styles.errorActive]: error,
+            })}
+          >
+            {error}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
