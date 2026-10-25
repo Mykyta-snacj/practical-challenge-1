@@ -3,15 +3,18 @@ import { Link } from "react-router";
 
 //styles
 import styles from "./SuccessNotification.module.scss";
+import classNames from "classnames";
 
 type Props = {
   eventId: number | null;
   setEventId: React.Dispatch<React.SetStateAction<number | null>>;
+  className: string;
 };
 
 export const SuccessNotification: React.FC<Props> = ({
   eventId,
   setEventId,
+  className,
 }) => {
   const link = `${window.location.origin}/practical-challenge-1/#/events/${eventId}`;
 
@@ -22,7 +25,7 @@ export const SuccessNotification: React.FC<Props> = ({
   const baseUrl = `${window.location.origin}/practical-challenge-1/`;
 
   return (
-    <div className={styles.notification}>
+    <div className={classNames(styles.notification, className)}>
       <p className={styles.title}>Event added successfully!</p>
 
       <Link className={styles.link} to={`../events/${eventId}`}>

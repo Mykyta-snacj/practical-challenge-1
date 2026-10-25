@@ -1,47 +1,85 @@
+@use "../../styles/mixins" as *;
+
 .eventsPage {
-	height: 100vh;
-	display: flex;
-	flex-direction: column;	
-	align-items: center;
-	justify-content: center;
+    @include page-grid;
+
+    box-sizing: border-box;
+	min-height: 100dvh;
+    padding: 16px;
+    background-color: #901811;
 }
 
 .nav {
-    position: fixed;
-    top: 30px;
-    left: 30px;
+    @include fullsize-grid;
+    margin-bottom: 16px;
 }
 
 .list {
-    width: 700px;
+    @include fullsize-grid;
+
+    height: max-content;
     display: flex;
     flex-direction: column;
-    font-size: 15px;
-    box-shadow: -12px 11px 17px 10px rgba(0, 0, 0, 0.64);
+    gap: 16px;
+    font-size: 20px;
     border-radius: 30px;
+
+
+    @include for-tablet {
+        gap: 0;
+        box-shadow: -12px 11px 17px 10px rgba(0, 0, 0, 0.64);
+        background-color: #fff;
+    }
 }
 
 .listItem {
-    display: flex;
+    position: relative;
     text-decoration: none;
-    align-items: center;
-    padding: 20px;
     color: #000;
     border-radius: 30px;
+    box-shadow: -12px 11px 17px 10px rgba(0, 0, 0, 0.64);
+    background-color: #fff;
     transition: 300ms;
+
+    @include for-tablet {
+        box-shadow: initial;
+    }
 
     &:hover {
         background-color: #e2e2e2;
         transition: 300ms;
     }
+
+    &:hover .dropdownContent {
+        display: flex;
+    }
+
+ 
 }
 
-.listItem > * {
-    flex: 1;
+.listItemContent {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    padding: 20px;
+
+    @include for-tablet {
+        flex-direction: row;
+    }
+}
+
+.listItemContent > * {
+    @include for-tablet {
+        flex: 1;
+    }
 }
 
 .lastColumn {
-    flex: 0 0 50px;
+    @include for-tablet {
+        flex: 0 0 50px;
+    }
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,4 +114,19 @@
     font-size: 30px;
     font-weight: 700;
     text-align: center;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  min-width: 130px;
+  max-width: 300px;
+  padding: 12px 16px;
+  gap: 15px;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  font-weight: 700;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border: 1px solid black;
+  z-index: 2;
 }

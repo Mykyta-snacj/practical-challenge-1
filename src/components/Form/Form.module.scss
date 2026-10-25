@@ -1,5 +1,5 @@
 .form {
-    width: 500px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -7,12 +7,13 @@
     font-size: 30px;
     box-shadow: -12px 11px 17px 10px rgba(0, 0, 0, 0.64);
     border-radius: 30px;
+    background-color: #fff;
 }
 
 .form > section {
     display: flex;
     justify-content: space-between;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .button {
@@ -20,4 +21,39 @@
     height: 35px;
     font-size: 20px;
     border-radius: 15px;
+}
+
+label {
+    font-weight: 700;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+    box-shadow: -2px 1px 7px 0px rgba(0, 0, 0, 0.64);
+    transition: 300ms;
+
+    &:hover {
+        background-color: #e2e6e9;
+        transition: 300ms;
+    }
+}
+
+select {
+  border: 1px solid #000;
+  border-radius: 15px;
+  background: #fff;
+  padding: 10px;
+  box-shadow: -2px 1px 7px 0px rgba(0, 0, 0, 0.64);
+  transition: 300ms;
+}
+
+select:hover,
+select:focus {
+  background: #e2e6e9;
+}
+
+textarea {
+    resize: none;
 }

@@ -31,7 +31,11 @@ export const HomePage = () => {
       <Navigation className={styles.nav} />
 
       {eventId ? (
-        <SuccessNotification eventId={eventId} setEventId={setEventId} />
+        <SuccessNotification
+          eventId={eventId}
+          setEventId={setEventId}
+          className={styles.success}
+        />
       ) : (
         <div className={styles.formContainer}>
           <h1 className={styles.title}>Event Mannager</h1>

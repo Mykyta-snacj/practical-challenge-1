@@ -29,21 +29,27 @@ export const EventsListPage = () => {
               className={styles.listItem}
               to={`/events/${event.id}`}
             >
-              <h3 className={styles.eventTitle}>{event.title}</h3>
+              <div className={styles.listItemContent}>
+                {" "}
+                <h3 className={styles.eventTitle}>{event.title}</h3>
+                <p>Start: {event.startDate}</p>
+                <p>Finish: {event.finishDate}</p>
+                <p
+                  className={classNames(styles.type, styles.lastColumn, {
+                    [styles.typeOnline]: event?.type === "Online",
+                    [styles.typeOffline]: event?.type === "Offline",
+                    [styles.typeHybride]: event?.type === "Hybride",
+                  })}
+                >
+                  {event.type}
+                </p>
+              </div>
 
-              <p>Start: {event.startDate}</p>
-
-              <p>Finish: {event.finishDate}</p>
-
-              <p
-                className={classNames(styles.type, styles.lastColumn, {
-                  [styles.typeOnline]: event?.type === "Online",
-                  [styles.typeOffline]: event?.type === "Offline",
-                  [styles.typeHybride]: event?.type === "Hybride",
-                })}
-              >
-                {event.type}
-              </p>
+              <div className={styles.dropdownContent}>
+                <p>Title: {event.title}</p>
+                {event.city !== "" && <p>City: {event.city}</p>}
+                <p>About: {event.about}</p>
+              </div>
             </NavLink>
           ))
         )}

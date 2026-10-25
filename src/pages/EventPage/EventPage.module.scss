@@ -1,30 +1,58 @@
+@use '../../styles/mixins' as *;
+
 .eventPage {
-    height: 100dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include page-grid;
+
+    box-sizing: border-box;
+    min-height: 100dvh;
+    padding: 16px;
+
+    background-color: #901811;
 }
 
 .event {
-    width: 500px;
+    @include fullsize-grid;
+
+   
+
+    @include for-desktop {
+		grid-column: 9 / 17;
+	}
+
+    box-sizing: border-box;
+    height: max-content;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
     padding: 25px;
-    font-size: 30px;
+    font-size: 15px;
     box-shadow: -12px 11px 17px 10px rgba(0, 0, 0, 0.64);
     border-radius: 30px;
+    background-color: #fff;
+
+    @include for-tablet {
+        font-size: 30px;
+        gap: 30px;    
+    }
 }
 
 .nav {
-    position: fixed;
-    top: 30px;
-    left: 30px;
+    @include fullsize-grid;
+
+    margin-bottom: 16px;
+	
+	@include for-desktop {
+		margin-bottom: 100px;
+	}
 }
 
 .title {
-    font-size: 40px;
+    font-size: 20px;
     font-weight: bold;
+
+    @include for-tablet {
+        font-size: 40px;
+    }
 }
 
 .type {
